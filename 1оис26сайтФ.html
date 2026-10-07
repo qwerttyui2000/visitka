@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Александра — Дизайнер</title>
+    <style>
+        /* Базовые стили и сброс */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+            background: #faf7f2; /* мягкий кремовый фон */
+            color: #2e2e2e;
+            line-height: 1.6;
+            padding: 2rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* Основной контейнер */
+        .container {
+            max-width: 800px;
+            width: 100%;
+        }
+
+        /* Шапка */
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            animation: fadeIn 1s ease;
+        }
+
+        .avatar {
+            width: 120px;
+            height: 120px;
+            background: #d9c8b2; /* пудровый */
+            border-radius: 50%;
+            margin: 0 auto 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #5a4a3a;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            border: 4px solid white;
+            transition: transform 0.3s;
+        }
+
+        .avatar:hover {
+            transform: scale(1.02);
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 500;
+            letter-spacing: -0.5px;
+            color: #1e1e1e;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: #6b5e4f;
+            margin-top: 0.3rem;
+            font-weight: 400;
+        }
+
+        /* Карточки */
+        .card {
+            background: white;
+            padding: 2rem;
+            border-radius: 28px;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.03);
+            margin-bottom: 2rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: 1px solid #f0e9e0;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+        }
+
+        h2 {
+            font-size: 1.4rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            color: #2e2e2e;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        h2 span {
+            font-size: 1.6rem;
+        }
+
+        p {
+            color: #4a4a4a;
+            font-size: 1.05rem;
+        }
+
+        /* Навыки — теги */
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.7rem;
+            margin-top: 1rem;
+        }
+
+        .skill-tag {
+            background: #f3ede6;
+            color: #4b3f33;
+            padding: 0.4rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.95rem;
+            transition: background 0.2s, transform 0.1s;
+            border: 1px solid #e3d9cd;
+        }
+
+        .skill-tag:hover {
+            background: #e6d9cb;
+            transform: scale(1.02);
+        }
+
+        /* Прогресс-бар (для "роста") */
+        .progress-item {
+            margin-bottom: 1.2rem;
+        }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.95rem;
+            margin-bottom: 0.3rem;
+            color: #4a4a4a;
+        }
+
+        .progress-bar-bg {
+            height: 8px;
+            background: #efe8e0;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            border-radius: 20px;
+            background: #b8a28e;
+            width: 0%;
+            transition: width 1.2s ease;
+        }
+
+        /* Контакты */
+        .contact-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .contact-btn {
+            display: inline-block;
+            padding: 0.7rem 1.6rem;
+            background: #2e2e2e;
+            color: white;
+            text-decoration: none;
+            border-radius: 40px;
+            font-weight: 500;
+            transition: background 0.2s, transform 0.1s;
+            font-size: 0.95rem;
+            border: none;
+            cursor: pointer;
+            letter-spacing: 0.3px;
+        }
+
+        .contact-btn:hover {
+            background: #4d4d4d;
+            transform: translateY(-2px);
+        }
+
+        .contact-btn.secondary {
+            background: transparent;
+            color: #2e2e2e;
+            border: 1.5px solid #d0c5b8;
+        }
+
+        .contact-btn.secondary:hover {
+            background: #f3ede6;
+            border-color: #b8a28e;
+        }
+
+        /* Футер */
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            color: #9a8b7a;
+            font-size: 0.9rem;
+            padding-bottom: 1rem;
+        }
+
+        /* Анимация появления */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        /* Задержки для карточек */
+        .card:nth-child(1) { animation-delay: 0.1s; }
+        .card:nth-child(2) { animation-delay: 0.2s; }
+        .card:nth-child(3) { animation-delay: 0.3s; }
+
+        /* Адаптив */
+        @media (max-width: 500px) {
+            body { padding: 1.5rem 1rem; }
+            h1 { font-size: 1.8rem; }
+            .card { padding: 1.5rem; }
+            .avatar { width: 100px; height: 100px; font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Шапка -->
+        <header>
+            <div class="avatar" aria-label="Аватар Александры">🎨</div>
+            <h1>Александра</h1>
+            <p class="subtitle">студентка · будущий крутой дизайнер</p>
+        </header>
+
+        <!-- Обо мне -->
+        <section class="card fade-in">
+            <h2><span>👋</span> Привет!</h2>
+            <p>Я учусь дизайну и каждый день прокачиваю насмотренность, чувство цвета и композицию. Мечтаю создавать проекты, которые делают мир чуточку красивее и удобнее. Открыта к стажировкам, коллаборациям и просто интересным разговорам о дизайне.</p>
+        </section>
+
+        <!-- Навыки -->
+        <section class="card fade-in">
+            <h2><span>🛠️</span> Что я умею</h2>
+            <div class="skills">
+                <span class="skill-tag">Figma</span>
+                <span class="skill-tag">Photoshop</span>
+                <span class="skill-tag">Illustrator</span>
+                <span class="skill-tag">Веб-дизайн</span>
+                <span class="skill-tag">UX/UI</span>
+                <span class="skill-tag">Типографика</span>
+                <span class="skill-tag">Цвет</span>
+            </div>
+
+            <div style="margin-top: 1.8rem;">
+                <div class="progress-item">
+                    <div class="progress-label">
+                        <span>Figma</span>
+                        <span>85%</span>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div class="progress-fill" style="width: 85%;"></div>
+                    </div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">
+                        <span>Photoshop</span>
+                        <span>70%</span>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div class="progress-fill" style="width: 70%;"></div>
+                    </div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">
+                        <span>Веб-дизайн (HTML/CSS)</span>
+                        <span>60%</span>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div class="progress-fill" style="width: 60%;"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Цель и контакты -->
+        <section class="card fade-in">
+            <h2><span>🚀</span> Моя цель</h2>
+            <p>Стать крутым дизайнером, работать в классной команде и создавать продукты, которые вдохновляют. Верю, что дизайн — это про людей, эмоции и детали.</p>
+            
+            <h2 style="margin-top: 1.8rem;"><span>📬</span> Связаться</h2>
+            <div class="contact-links">
+                <a href="mailto:alexandra@example.com" class="contact-btn">Email</a>
+                <a href="#" class="contact-btn secondary" target="_blank">Telegram</a>
+                <a href="#" class="contact-btn secondary" target="_blank">Behance</a>
+            </div>
+        </section>
+
+        <!-- Футер -->
+        <footer>
+            <p>© 2025 Александра · сделано с душой и любовью к дизайну</p>
+        </footer>
+    </div>
+
+    <!-- Небольшой скрипт для анимации прогресс-баров при загрузке -->
+    <script>
+        window.addEventListener('load', () => {
+            // Если хотите, чтобы полоски плавно заполнялись, можно оставить так.
+            // Уже заданы width в inline-стилях, но для чистоты можно и через скрипт.
+            // Оставим как есть — работает сразу.
+        });
+    </script>
+</body>
+</html>
